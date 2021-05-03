@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vanilla blog</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/sketchy/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+  integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+</head>
+<body>
+  <nav class="navbar navbar-dark bg-primary mb-3">
+    <div class="container">
+      <a href="#" class="navbar-brand">
+        <span>Vanilla Blog</span>
+        <i class="fas fa-ice-cream"/>
+      </a>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="card card-body card-form my-5">
+      <h1>Say something...</h1>
+      <p class="lead">What's on your mind?</p>
+      <div class="form-group">
+        <input type="text" id="title" class="form-control" placeholder="The title goes here">
+      </div>
+      <div class="form-group">
+        <textarea id="body" class="form-control" placeholder="You can probably guess what goes here">
+      </div>
+      <button class="post-submit-btn btn-primary btn-block btn-lg">
+        <span>Send it</span>
+        <i class="fas fa-paper-plane"/>
+      </button>
+    </div> 
+    <div id="posts"></div>
+  </div>
+  <footer class="footer mt-5 p-3 text-center bg-secondary">
+    <span>Vanilla Blog</span>
+    <i class="fas fa-ice-cream"/>
+  </footer>
+  <script src="./index.js"></script>
+</body>
+</html>

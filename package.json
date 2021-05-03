@@ -1,0 +1,21 @@
+{
+  "name": "vanilla-js-blog",
+  "version": "1.0.0",
+  "description": "A blog written in vanilla JS",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel index.html",
+    "serve": "json-server --watch db.json"
+  },
+  "author": "Paul Clark",
+  "license": "ISC",
+  "dependencies": {
+    "json-server": "^0.16.3"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5"
+  },
+  "browserslist": [
+    "since 2017-06"
+  ]
+}
