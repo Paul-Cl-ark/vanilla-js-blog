@@ -1,6 +1,9 @@
 footer {
-  position: fixed;
   height: 50px;
-  bottom: 0;
+  top: auto;
   width: 100%;
+}
+
+.body {
+  margin-bottom: 50px;
 }
