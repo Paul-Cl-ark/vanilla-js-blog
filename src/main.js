@@ -9,19 +9,17 @@ const getPosts = async () => {
   
 document.addEventListener('DOMContentLoaded', getPosts);
 
-const submitPost = async () => {
+const submitPost = () => {
   const title = document.querySelector('#title').value;
   const body = document.querySelector('#body').value;
 
-  const postData = { title, body };
-
-  const response = await fetch('http://localhost:3000/posts', {
+  fetch('http://localhost:3000/posts', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(postData)
+    body: JSON.stringify({ title, body })
   })
     .then(() => {
       ui.clearFields()
