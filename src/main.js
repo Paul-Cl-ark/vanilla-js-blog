@@ -23,7 +23,10 @@ const submitPost = async () => {
     },
     body: JSON.stringify(postData)
   })
-    .then(res => getPosts())
+    .then(() => {
+      ui.clearFields()
+      getPosts();
+    })
     .catch(err => console.log(err));
 }
 

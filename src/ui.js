@@ -1,11 +1,12 @@
 class UI {
-  constructor () {
-    this.posts = document.querySelector('#posts')
-    this.title = document.querySelector('#body')
-    this.submit = document.querySelector('.post-submit')
+  constructor() {
+    this.posts = document.querySelector('#posts');
+    this.title = document.querySelector('#title');
+    this.body = document.querySelector('#body');
+    this.submit = document.querySelector('#post-submit-btn');
   }
 
-  showPosts (posts) {
+  showPosts(posts) {
     this.posts.innerHTML = posts.map(post => `
     <div class="card mb-3">
       <div class="card-body">
@@ -18,6 +19,12 @@ class UI {
     `)
     .join('');
   }
+
+  clearFields() {
+    this.title.value = '';
+    this.body.value = '';
+  }
+
 }
 
-export const ui = new UI()
+export const ui = new UI();
