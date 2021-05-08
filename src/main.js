@@ -50,12 +50,19 @@ const enablePostEdit = (e) => {
     const body = e.target.previousElementSibling.textContent;
     
     const data = { id, title, body };
-
+    
     ui.fillForm(data);
   }
   
   e.preventDefault();
 }
+
+const cancelEdit = (e) => {
+  const isCancel = e.target.id === 'post-cancel-button';
+  if (isCancel) ui.resetFormState();
+
+  e.preventDefault();
+};
 
 document.querySelector('#post-submit-btn')
   .addEventListener('click', submitPost);
@@ -65,3 +72,6 @@ document.querySelector('#posts')
 
 document.querySelector('#posts')
   .addEventListener('click', enablePostEdit);
+
+document.querySelector('.card-form')
+  .addEventListener('click', cancelEdit);

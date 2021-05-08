@@ -63,7 +63,7 @@ class UI {
     this.submit.firstElementChild.textContent= 'Send it';
     this.submit.className = this.submit.className.replace('info', 'primary');
 
-    const cancelButton = document.querySelector('post-cancel-button');
+    const cancelButton = document.getElementById('post-cancel-button');
     if (cancelButton) cancelButton.remove();
 
     this.clearId();
