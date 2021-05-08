@@ -12,8 +12,8 @@ class UI {
       <div class="card-body">
         <h4 class="card-title">${post.title}</h4>
         <p class="card-text">${post.body}</p>
-        <a href="#" class="card-link" data-id="${post.id}">Edit</a>
-        <a href="#" class="card-link" data-id="${post.id}">Delete</a>
+        <a href="#" class="card-link edit" data-id="${post.id}">Edit</a>
+        <a href="#" class="card-link delete" data-id="${post.id}">Delete</a>
       </div>
     </div>
     `)

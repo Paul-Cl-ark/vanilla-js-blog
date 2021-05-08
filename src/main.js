@@ -28,5 +28,22 @@ const submitPost = () => {
     .catch(err => console.log(err));
 }
 
+const deletePost = (e) => {
+  const isDelete = e.target.classList.contains('delete');
+  const id = e.target.dataset.id
+  if (isDelete && id) {
+    console.log(id);
+    fetch(`http://localhost:3000/posts/${id}`, {
+      method: 'DELETE'
+    })
+    .then(() => getPosts())
+    .catch(err => console.log(err));
+  };
+  e.preventDefault();
+};
+
 document.querySelector('#post-submit-btn')
   .addEventListener('click', submitPost);
+
+document.querySelector('#posts')
+  .addEventListener('click', deletePost);
