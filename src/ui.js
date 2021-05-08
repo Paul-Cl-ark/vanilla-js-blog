@@ -41,12 +41,19 @@ class UI {
     const cancelButton = document.createElement('button');
     cancelButton.id = 'post-cancel-button';
     cancelButton.className = 'btn-secondary btn-block btn-lg';
-    cancelButton.appendChild(document.createTextNode('Cancel'));
+
+    const textSpan = document.createElement('span');
+    textSpan.appendChild(document.createTextNode('Cancel'));
+    const icon = document.createElement('i');
+    icon.className = 'fas fa-undo';
+    cancelButton.appendChild(textSpan);
+    cancelButton.appendChild(document.createTextNode(' '));
+    cancelButton.appendChild(icon);
 
     const cardForm = document.querySelector('.card-form');
     cardForm.appendChild(cancelButton)
   }
 
-}
+};
 
 export const ui = new UI();
