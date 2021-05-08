@@ -1,20 +1,19 @@
 import { ui } from './ui';
 
-const getPosts = async () => {
-  const posts = await fetch('http://localhost:3000/posts')
-    .then(res => res.json());
+const basePath = 'http://localhost:3000/posts/'
 
+const getPosts = async () => {
+  const posts = await fetch(basePath).then(res => res.json());
+  
   return ui.showPosts(posts);
 };
-  
-document.addEventListener('DOMContentLoaded', getPosts);
 
 const submitPost = () => {
-  const title = document.querySelector('#title').value;
-  const body = document.querySelector('#body').value;
-  const id = document.querySelector('#id').value;
-
-  fetch(`http://localhost:3000/posts/${id}`, {
+  const title = ui.title.value
+  const body = ui.body.value;
+  const id = ui.id.value;
+  
+  fetch(`${basePath}${id}`, {
     method: id ? 'PUT' : 'POST',
     headers: {
       'Accept': 'application/json',
@@ -22,23 +21,23 @@ const submitPost = () => {
     },
     body: JSON.stringify({ title, body })
   })
-    .then(() => {
-      ui.clearFields();
-      getPosts();
-    })
-    .catch(err => console.log(err));
+  .then(() => {
+    ui.clearFields();
+    getPosts();
+  })
+  .catch(err => console.log(err));
 };
 
 const deletePost = (e) => {
   const isDelete = e.target.classList.contains('delete');
   const id = e.target.dataset.id;
+  
   if (isDelete && id) {
-    fetch(`http://localhost:3000/posts/${id}`, {
-      method: 'DELETE'
-    })
+    fetch(`${basePath}${id}`, { method: 'DELETE' })
     .then(() => getPosts())
     .catch(err => console.log(err));
   };
+  
   e.preventDefault();
 };
 
@@ -49,10 +48,8 @@ const enablePostEdit = (e) => {
   if (isEdit && id) {
     const title = e.target.previousElementSibling.previousElementSibling.textContent;
     const body = e.target.previousElementSibling.textContent;
-    
-    const data = { id, title, body };
-    
-    ui.fillForm(data);
+        
+    ui.fillForm({ id, title, body });
   }
   
   e.preventDefault();
@@ -61,18 +58,16 @@ const enablePostEdit = (e) => {
 const cancelEdit = (e) => {
   const isCancel = e.target.id === 'post-cancel-button';
   if (isCancel) ui.resetFormState();
-
+  
   e.preventDefault();
 };
 
+document.addEventListener('DOMContentLoaded', getPosts);
 document.querySelector('#post-submit-btn')
   .addEventListener('click', submitPost);
-
 document.querySelector('#posts')
   .addEventListener('click', deletePost);
-
 document.querySelector('#posts')
   .addEventListener('click', enablePostEdit);
-
 document.querySelector('.card-form')
   .addEventListener('click', cancelEdit);
