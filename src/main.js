@@ -4,15 +4,31 @@ const getPosts = async () => {
   const posts = await fetch('http://localhost:3000/posts')
     .then(res => res.json());
 
-    return ui.showPosts(posts);
-  }
+  return ui.showPosts(posts);
+};
   
 document.addEventListener('DOMContentLoaded', getPosts);
 
 const submitPost = () => {
   const title = document.querySelector('#title').value;
   const body = document.querySelector('#body').value;
+  const id = document.querySelector('#id').value;
 
+  if (id) {
+    fetch(`http://localhost:3000/posts/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ title, body })
+  })
+    .then(() => {
+      ui.clearFields();
+      getPosts();
+    })
+    .catch(err => console.log(err));
+  } else {
   fetch('http://localhost:3000/posts', {
     method: 'POST',
     headers: {
@@ -26,7 +42,8 @@ const submitPost = () => {
       getPosts();
     })
     .catch(err => console.log(err));
-}
+  };
+};
 
 const deletePost = (e) => {
   const isDelete = e.target.classList.contains('delete');
