@@ -30,9 +30,8 @@ const submitPost = () => {
 
 const deletePost = (e) => {
   const isDelete = e.target.classList.contains('delete');
-  const id = e.target.dataset.id
+  const id = e.target.dataset.id;
   if (isDelete && id) {
-    console.log(id);
     fetch(`http://localhost:3000/posts/${id}`, {
       method: 'DELETE'
     })
@@ -42,8 +41,27 @@ const deletePost = (e) => {
   e.preventDefault();
 };
 
+const enablePostEdit = (e) => {
+  const isEdit = e.target.classList.contains('edit');
+  const id = e.target.dataset.id;
+  
+  if (isEdit && id) {
+    const title = e.target.previousElementSibling.previousElementSibling.textContent;
+    const body = e.target.previousElementSibling.textContent;
+    
+    const data = { id, title, body }
+
+    ui.fillForm(data)
+  }
+  
+  e.preventDefault();
+}
+
 document.querySelector('#post-submit-btn')
   .addEventListener('click', submitPost);
 
 document.querySelector('#posts')
   .addEventListener('click', deletePost);
+
+document.querySelector('#posts')
+  .addEventListener('click', enablePostEdit);

@@ -25,6 +25,11 @@ class UI {
     this.body.value = '';
   }
 
+  fillForm({ id, title, body }) {
+    this.title.value = title;
+    this.body.value = body;
+  }
+
 }
 
 export const ui = new UI();
