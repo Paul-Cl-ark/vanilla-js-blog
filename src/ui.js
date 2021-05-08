@@ -21,6 +21,10 @@ class UI {
     .join('');
   }
 
+  clearId() {
+    this.id.value = '';
+  }
+
   clearFields() {
     this.title.value = '';
     this.body.value = '';
@@ -52,6 +56,18 @@ class UI {
 
     const cardForm = document.querySelector('.card-form');
     cardForm.appendChild(cancelButton)
+  }
+
+
+  resetFormState() {
+    this.submit.firstElementChild.textContent= 'Send it';
+    this.submit.className = this.submit.className.replace('info', 'primary');
+
+    const cancelButton = document.querySelector('post-cancel-button');
+    if (cancelButton) cancelButton.remove();
+
+    this.clearId();
+    this.clearFields();
   }
 
 };
