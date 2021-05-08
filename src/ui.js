@@ -1,10 +1,10 @@
 class UI {
   constructor() {
-    this.posts = document.querySelector('#posts');
-    this.title = document.querySelector('#title');
-    this.body = document.querySelector('#body');
-    this.id = document.querySelector('#id');
-    this.submit = document.querySelector('#post-submit-btn');
+    this.posts = document.getElementById('posts');
+    this.title = document.getElementById('title');
+    this.body = document.getElementById('body');
+    this.id = document.getElementById('id');
+    this.submit = document.getElementById('post-submit-btn');
   }
 
   showPosts(posts) {
@@ -19,24 +19,21 @@ class UI {
     </div>
     `)
     .join('');
-  }
-
-  clearId() {
-    this.id.value = '';
-  }
-
+  };
+  
   clearFields() {
+    this.id.value = '';
     this.title.value = '';
     this.body.value = '';
-  }
+  };
 
   fillForm({ id, title, body }) {
     this.id.value = id;
     this.title.value = title;
     this.body.value = body;
 
-    this.setEditFormState()
-  }
+    this.setEditFormState();
+  };
 
   setEditFormState() {
     this.submit.firstElementChild.textContent= 'Update post';
@@ -48,16 +45,17 @@ class UI {
 
     const textSpan = document.createElement('span');
     textSpan.appendChild(document.createTextNode('Cancel'));
+    
     const icon = document.createElement('i');
     icon.className = 'fas fa-undo';
+    
     cancelButton.appendChild(textSpan);
     cancelButton.appendChild(document.createTextNode(' '));
     cancelButton.appendChild(icon);
 
     const cardForm = document.querySelector('.card-form');
     cardForm.appendChild(cancelButton)
-  }
-
+  };
 
   resetFormState() {
     this.submit.firstElementChild.textContent= 'Send it';
@@ -66,9 +64,8 @@ class UI {
     const cancelButton = document.getElementById('post-cancel-button');
     if (cancelButton) cancelButton.remove();
 
-    this.clearId();
     this.clearFields();
-  }
+  };
 
 };
 
