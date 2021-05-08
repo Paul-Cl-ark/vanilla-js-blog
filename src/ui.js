@@ -37,6 +37,14 @@ class UI {
   setEditFormState() {
     this.submit.firstElementChild.textContent= 'Update post';
     this.submit.className = this.submit.className.replace('primary', 'info');
+
+    const cancelButton = document.createElement('button');
+    cancelButton.id = 'post-cancel-button';
+    cancelButton.className = 'btn-secondary btn-block btn-lg';
+    cancelButton.appendChild(document.createTextNode('Cancel'));
+
+    const cardForm = document.querySelector('.card-form');
+    cardForm.appendChild(cancelButton)
   }
 
 }
