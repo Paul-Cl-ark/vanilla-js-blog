@@ -22,7 +22,7 @@ const submitPost = () => {
     body: JSON.stringify({ title, body })
   })
     .then(() => {
-      ui.clearFields()
+      ui.clearFields();
       getPosts();
     })
     .catch(err => console.log(err));
@@ -49,9 +49,9 @@ const enablePostEdit = (e) => {
     const title = e.target.previousElementSibling.previousElementSibling.textContent;
     const body = e.target.previousElementSibling.textContent;
     
-    const data = { id, title, body }
+    const data = { id, title, body };
 
-    ui.fillForm(data)
+    ui.fillForm(data);
   }
   
   e.preventDefault();
