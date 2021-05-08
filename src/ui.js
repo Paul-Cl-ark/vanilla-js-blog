@@ -3,6 +3,7 @@ class UI {
     this.posts = document.querySelector('#posts');
     this.title = document.querySelector('#title');
     this.body = document.querySelector('#body');
+    this.id = document.querySelector('#id');
     this.submit = document.querySelector('#post-submit-btn');
   }
 
@@ -26,8 +27,16 @@ class UI {
   }
 
   fillForm({ id, title, body }) {
+    this.id.value = id;
     this.title.value = title;
     this.body.value = body;
+
+    this.setEditFormState()
+  }
+
+  setEditFormState() {
+    this.submit.firstElementChild.textContent= 'Update post';
+    this.submit.className = this.submit.className.replace('primary', 'info');
   }
 
 }
