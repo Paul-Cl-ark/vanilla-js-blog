@@ -58,12 +58,13 @@ class UI {
   };
 
   resetFormState() {
-    this.submit.firstElementChild.textContent= 'Send it';
-    this.submit.className = this.submit.className.replace('info', 'primary');
-
     const cancelButton = document.getElementById('post-cancel-button');
-    if (cancelButton) cancelButton.remove();
-
+    if (cancelButton) {
+      cancelButton.remove();
+      this.submit.firstElementChild.textContent= 'Send it';
+      this.submit.className = this.submit.className.replace('info', 'primary');
+    }
+    
     this.clearFields();
   };
 

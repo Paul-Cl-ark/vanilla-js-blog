@@ -22,7 +22,7 @@ const submitPost = () => {
     body: JSON.stringify({ title, body })
   })
   .then(() => {
-    ui.clearFields();
+    ui.resetFormState();
     getPosts();
   })
   .catch(err => console.log(err));
