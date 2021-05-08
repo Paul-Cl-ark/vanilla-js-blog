@@ -14,9 +14,8 @@ const submitPost = () => {
   const body = document.querySelector('#body').value;
   const id = document.querySelector('#id').value;
 
-  if (id) {
-    fetch(`http://localhost:3000/posts/${id}`, {
-    method: 'PUT',
+  fetch(`http://localhost:3000/posts/${id}`, {
+    method: id ? 'PUT' : 'POST',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
@@ -28,21 +27,6 @@ const submitPost = () => {
       getPosts();
     })
     .catch(err => console.log(err));
-  } else {
-  fetch('http://localhost:3000/posts', {
-    method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ title, body })
-  })
-    .then(() => {
-      ui.clearFields();
-      getPosts();
-    })
-    .catch(err => console.log(err));
-  };
 };
 
 const deletePost = (e) => {
